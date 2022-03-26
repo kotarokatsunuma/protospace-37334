@@ -21,10 +21,8 @@ class PrototypesController < ApplicationController
   end
 
   def show
-    
     @comment = Comment.new
     @comments = @prototype.comments
-
   end
 
   def edit
@@ -32,7 +30,6 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    
     if @prototype.update(prototype_params)
       redirect_to prototype_path(@prototype)
     else
@@ -41,14 +38,12 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
-    
     if @prototype.destroy
       redirect_to root_path
     else
       redirect_to root_path
     end  
   end
-
 
   private
 
@@ -61,6 +56,6 @@ class PrototypesController < ApplicationController
   end
 
   def contributor_confirmation
-    redirect_to root_path unless current_user = @prototype.user
+    redirect_to root_path unless current_user == @prototype.user
   end
 end
